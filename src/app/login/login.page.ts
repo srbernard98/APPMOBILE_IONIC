@@ -17,7 +17,7 @@ export class LoginPage {
     this.errorMessage = '';
 
     if (!this.isPasswordValid(this.password)) {
-      this.errorMessage = 'La contraseña debe tener 4 números, 3 caracteres especiales, y 1 mayúscula.';
+      this.errorMessage = 'La contraseña debe tener al menos 4 números, 3 caracteres especiales, y 1 letra mayúscula.';
       return;
     }
 
@@ -26,9 +26,13 @@ export class LoginPage {
   }
 
   isPasswordValid(password: string): boolean {
-    const hasNumber = /[0-9]{4}/.test(password);
+    // Al menos 4 números
+    const hasNumber = (password.match(/[0-9]/g) || []).length >= 4;
+    // Al menos 1 letra mayúscula
     const hasUpperCase = /[A-Z]/.test(password);
-    const hasCharacter = /[!@#$%^&*(),.?":{}|<>]{3}/.test(password); // Ajusta los caracteres especiales según sea necesario
+    // Al menos 3 caracteres especiales
+    const hasCharacter = (password.match(/[!@#$%^&*(),.?":{}|<>_-]/g) || []).length >= 3;
+
     return hasNumber && hasUpperCase && hasCharacter && password.length >= 8;
   }
 

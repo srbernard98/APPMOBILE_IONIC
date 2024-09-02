@@ -12,12 +12,12 @@ const routes: Routes = [
     loadChildren: () => import('./login/login.module').then(m => m.LoginPageModule)
   },
   {
-    path: 'tabs',
-    loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
-  },
-  {
     path: '**',
     redirectTo: 'login' // Redirige cualquier ruta desconocida a la página de login
+  },
+  {
+    path: 'welcome-modal',
+    loadChildren: () => import('./welcome-modal/welcome-modal.module').then( m => m.WelcomeModalPageModule)
   }
 ];
 

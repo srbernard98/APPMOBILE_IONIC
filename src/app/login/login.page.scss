@@ -1,0 +1,23 @@
+.home-page {
+    background-color: #007BFF; /* Azul primario */
+    height: 100%;
+  }
+ion-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+form {
+    width: 90%;
+    max-width: 400px;
+  }
+  
+ion-item {
+    margin-bottom: 16px;
+  }
+  
+ion-button {
+    margin-top: 16px;
+  }
+  
