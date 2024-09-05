@@ -1,23 +1,51 @@
 .home-page {
-    background-color: #007BFF; /* Azul primario */
-    height: 100%;
-  }
+  background-color: #007BFF; /* Azul primario */
+  height: 100%;
+}
+
 ion-content {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%; /* Asegura que el contenido se centre verticalmente */
+}
+
 form {
-    width: 90%;
-    max-width: 400px;
-  }
-  
+  width: 90%;
+  max-width: 400px;
+  background-color: #ffffff; /* Fondo blanco para el formulario */
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+}
+
 ion-item {
-    margin-bottom: 16px;
-  }
-  
-ion-button {
-    margin-top: 16px;
-  }
-  
+  margin-bottom: 16px;
+}
+
+ion-item ion-input {
+  border: none; /* Sin borde */
+  border-radius: 4px;
+  padding: 10px; /* Espaciado interno */
+  font-size: 16px;
+  text-align: center; /* Centra el texto */
+  background-color: #141111;
+  color: #fff; /* Texto blanco */
+  transition: all 0.3s ease-in-out; /* Transición suave */
+}
+
+ion-item ion-input::placeholder {
+  color: #ffffff; /* Color del placeholder */
+}
+
+/* Estilo cuando el campo está enfocado */
+ion-item ion-input:focus,
+ion-item ion-input:focus-within {
+  background-color: hsl(52, 77%, 68%); /* Fondo ligeramente diferente para el enfoque */
+  transform: scale(1.05); /* Agranda el campo */
+  box-shadow: 0 0 8px rgba(0, 123, 255, 0.5); /* Resplandor */
+}
+
+ion-item ion-label {
+  display: none; /* Oculta las etiquetas ya que se usan placeholders */
+}

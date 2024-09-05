@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AlertController } from '@ionic/angular';
+import { AlertController, NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-login',
@@ -11,7 +11,7 @@ export class LoginPage {
   password: string = ''; // Inicializar como cadena vacía
   errorMessage: string = ''; // Inicializar como cadena vacía
 
-  constructor(private alertController: AlertController) {}
+  constructor(private alertController: AlertController, private navCtrl: NavController) {}
 
   onLogin() {
     this.errorMessage = '';
@@ -21,7 +21,7 @@ export class LoginPage {
       return;
     }
 
-    // Aquí puedes implementar la lógica para el login exitoso sin validación en base de datos
+    // Mostrar la alerta de éxito y luego navegar a la página Portada
     this.showSuccessAlert();
   }
 
@@ -38,9 +38,14 @@ export class LoginPage {
 
   async showSuccessAlert() {
     const alert = await this.alertController.create({
-      header: 'Login Exitoso',
-      message: '¡Has iniciado sesión correctamente!',
-      buttons: ['OK']
+      header: '¡Bienvenido a AhorraSmart!',
+      message: ' Toma las riendas de tus finanzas.',
+      buttons: [{
+        text: 'OK',
+        handler: () => {
+          this.navCtrl.navigateRoot('/portada'); // Navegar a la página Portada después de cerrar la alerta
+        }
+      }]
     });
 
     await alert.present();

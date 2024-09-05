@@ -1,0 +1,51 @@
+ion-segment {
+    --indicator-color: #ffffff;
+    --background: #6c63ff;
+    margin-bottom: 20px;
+  }
+  
+  .savings {
+    text-align: center;
+    margin: 20px 0;
+  }
+  
+  .bar-container {
+    width: 100%;
+    background: #f2f2f2;
+    height: 20px;
+    position: relative;
+    border-radius: 10px;
+  }
+  
+  .bar-earned {
+    background: #4cd964;
+    height: 100%;
+    width: 70%;
+    border-radius: 10px;
+  }
+  
+  .bar-spent {
+    background: #ff3b30;
+    height: 100%;
+    width: 50%;
+    border-radius: 10px;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  
+  ion-list {
+    margin-top: 20px;
+  }
+  
+  ion-item {
+    --background: transparent;
+    border-bottom: 1px solid #ddd;
+    margin: 0;
+    padding: 10px 0;
+  }
+  
+  ion-note {
+    font-weight: bold;
+  }
+  

@@ -1,7 +1,5 @@
 {
-  "name": "AhorraSmart",
-  "integrations": {
-    "capacitor": {}
-  },
+  "name": "your-project-name",
+  "integrations": {},
   "type": "angular"
 }
