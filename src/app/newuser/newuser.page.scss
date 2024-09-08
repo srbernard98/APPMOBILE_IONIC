@@ -1,12 +1,44 @@
-.form-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-  }
-  
-  ion-item {
-    margin-bottom: 20px;
-  }
-  
+.main-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  min-height: 100vh; /* Asegura que ocupe al menos toda la altura de la ventana */
+  padding-top: 20px; /* Espacio superior opcional */
+}
+
+.logo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center; /* Asegura que el logo esté centrado verticalmente si el contenedor tiene una altura significativa */
+  margin-bottom: 20px;
+}
+
+.logo {
+  max-width: 150px;
+  height: auto;
+  border-radius: 50%; /* Hace que la imagen sea redonda */
+  object-fit: cover; /* Ajusta la imagen para que llene el contenedor circular */
+}
+
+.new-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Centra verticalmente el contenido */
+  align-items: center; /* Centra horizontalmente el contenido */
+  width: 100%;
+  max-width: 400px; /* Puedes ajustar el ancho máximo del formulario */
+  padding: 0 16px; /* Espaciado horizontal para el formulario */
+  margin-top: 20px; /* Espacio superior opcional, si deseas mantener un espaciado consistente */
+}
+
+.footer-buttons {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding-top: 1rem;
+}
+
+.footer-buttons ion-button {
+  flex: 1;
+}
