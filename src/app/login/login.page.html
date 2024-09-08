@@ -1,0 +1,28 @@
+<ion-content class="ion-padding">
+  <div class="main-container">
+    <!-- Contenedor del logo -->
+    <div class="logo-container">
+      <img src="assets/img/LOGO_FUNDFLOE.jpg" alt="Logo de la App" class="logo" />
+    </div>
+
+    <!-- Formulario de inicio de sesión -->
+    <form (ngSubmit)="onSubmit()" #loginForm="ngForm" class="login-container">
+      <ion-item>
+        <ion-label position="floating">Correo Electrónico</ion-label>
+        <ion-input type="email" required [(ngModel)]="email" name="email"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Contraseña</ion-label>
+        <ion-input type="password" required [(ngModel)]="password" name="password"></ion-input>
+      </ion-item>
+
+      <ion-button expand="block" type="submit" [disabled]="!loginForm.valid">Iniciar Sesión</ion-button>
+
+      <div class="footer-buttons">
+        <ion-button fill="clear" (click)="resetPassword()">RESTABLECER CONTRASEÑA</ion-button>
+        <ion-button fill="clear" (click)="newUserAccount()">NUEVO USUARIO</ion-button>
+      </div>
+    </form>
+  </div>
+</ion-content>
