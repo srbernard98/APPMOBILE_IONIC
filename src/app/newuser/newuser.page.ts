@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
-import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-newuser',
@@ -49,5 +48,9 @@ export class NewUserPage {
     });
 
     await alert.present();
+  }
+
+  cancel() {
+    this.router.navigate(['/login']);
   }
 }

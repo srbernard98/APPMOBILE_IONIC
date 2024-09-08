@@ -31,4 +31,8 @@ export class ResetpassPage {
 
     await alert.present();
   }
+  
+  cancel() {
+    this.router.navigate(['/login']);
+  }
 }

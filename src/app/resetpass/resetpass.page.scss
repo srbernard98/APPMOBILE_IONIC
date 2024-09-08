@@ -37,4 +37,9 @@ ion-content {
     width: 100%; /* Asegura que el botón ocupe el ancho completo del contenedor */
     max-width: 200px; /* Puedes ajustar el ancho máximo del botón si lo deseas */
   }
+  .cancel-button {
+    position: fixed;
+    bottom: 16px;
+    left: 16px;
+  }
   
