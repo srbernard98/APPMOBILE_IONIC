@@ -1,20 +1,17 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-
 import { IonicModule } from '@ionic/angular';
-
-import { AccessPageRoutingModule } from './access-routing.module';
-
-import { AccessPage } from './access.page';
+import { NewUserPageRoutingModule } from './newuser-routing.module';
+import { NewUserPage } from './newuser.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    AccessPageRoutingModule
+    NewUserPageRoutingModule
   ],
-  declarations: [AccessPage]
+  declarations: [NewUserPage]
 })
-export class AccessPageModule {}
+export class NewUserPageModule {}
