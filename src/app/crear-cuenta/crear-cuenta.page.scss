@@ -1,0 +1,48 @@
+.signup-container {
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .avatar-container {
+    position: relative;
+    margin-bottom: 20px;
+  }
+  
+  ion-avatar {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto;
+  }
+  
+  .add-avatar {
+    position: absolute;
+    bottom: 10px;
+    right: 30px;
+    font-size: 1.5em;
+    color: #ff7e5f;
+  }
+  
+  ion-item {
+    --background: transparent;
+    border-bottom: 1px solid #ddd;
+    margin: 10px 0;
+  }
+  
+  ion-button {
+    margin-top: 20px;
+    border-radius: 50px;
+    --background: linear-gradient(to right, #ff7e5f, #feb47b);
+  }
+  
+  .social-icons {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  .social-icons ion-icon {
+    font-size: 2em;
+    margin: 0 10px;
+    color: #666;
+  }
+  

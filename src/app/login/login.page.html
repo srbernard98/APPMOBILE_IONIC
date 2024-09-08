@@ -5,15 +5,25 @@
 </ion-header>
 
 <ion-content>
-  <form (ngSubmit)="onLogin()">
-    <ion-item>
-      <ion-label position="floating">Username</ion-label>
-      <ion-input [(ngModel)]="username" name="username" type="text"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label position="floating">Password</ion-label>
-      <ion-input [(ngModel)]="password" name="password" type="password"></ion-input>
-    </ion-item>
-    <ion-button expand="full" type="submit">Login</ion-button>
-  </form>
+  <div class="login-container">
+    <div class="logo-container">
+      <img src="assets/img/logo.jpeg" alt="Logo" />
+    </div>
+
+    <form (ngSubmit)="onLogin()">
+      <ion-item>
+        <ion-label position="floating">Username</ion-label>
+        <ion-input [(ngModel)]="username" name="username" type="text"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Password</ion-label>
+        <ion-input [(ngModel)]="password" name="password" type="password"></ion-input>
+      </ion-item>
+
+      <ion-button expand="full" type="submit">Login</ion-button>
+    </form>
+    
+    <p class="create-account">¿No tienes cuenta? <a [routerLink]="['/crear-cuenta']">¡Créala!</a></p>
+  </div>
 </ion-content>

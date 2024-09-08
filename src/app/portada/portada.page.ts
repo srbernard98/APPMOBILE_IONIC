@@ -7,12 +7,24 @@ import { NavController } from '@ionic/angular';
   styleUrls: ['./portada.page.scss'],
 })
 export class PortadaPage {
-  
-  // Variables que faltan
+
+  currentMonth: string;
   topSpending: { category: string, amount: number }[] = [];
   monthlyBudget: { budget: string, amount: number }[] = [];
 
+  // Datos del gráfico
+  doughnutChartLabels: string[] = ['Alimentación', 'Transporte', 'Entretenimiento'];
+  doughnutChartData: number[] = [150, 100, 50]; // Valores iniciales
+  doughnutChartType: string = 'doughnut';
+  chartOptions: any = {
+    responsive: true,
+    maintainAspectRatio: false
+  };
+
   constructor(private navCtrl: NavController) {
+    const date = new Date();
+    this.currentMonth = date.toLocaleString('default', { month: 'long' });
+
     // Inicialización de las variables con datos de ejemplo
     this.topSpending = [
       { category: 'Alimentación', amount: 150 },

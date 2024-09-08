@@ -1,52 +1,38 @@
 <ion-header>
   <ion-toolbar color="primary">
-    <ion-title>Today $180.75</ion-title>
-    <ion-buttons slot="end">
-      <ion-button>
-        <ion-icon slot="icon-only" name="arrow-up-circle-outline"></ion-icon>
-        Upgrade
-      </ion-button>
-    </ion-buttons>
+    <ion-title>Mis finanzas</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-segment value="expenses">
-    <ion-segment-button value="expenses">
-      Expenses
-    </ion-segment-button>
-    <ion-segment-button value="income">
-      Income
-    </ion-segment-button>
-  </ion-segment>
-
-  <div class="savings">
-    <h2>March Savings</h2>
-    <div class="bar-container">
-      <div class="bar-earned"></div>
-      <div class="bar-spent"></div>
-    </div>
+  <div style="display: block">
+    <canvas baseChart
+            [data]="doughnutChartData"
+            [labels]="doughnutChartLabels"
+            [chartType]="doughnutChartType"
+            [options]="chartOptions">
+    </canvas>
   </div>
 
   <ion-list>
     <ion-item>
-      <ion-label>Top Spending</ion-label>
+      <ion-label>Gastos principales</ion-label>
     </ion-item>
 
     <ion-item *ngFor="let category of topSpending">
-      <ion-label>{{ category.category }}</ion-label> <!-- Aquí estaba el error: cambiado 'category.name' por 'category.category' -->
-      <ion-note slot="end" color="danger">{{ category.amount }}</ion-note>
+      <ion-label>{{ category.category }}</ion-label>
+      <ion-input [(ngModel)]="category.amount" placeholder="0" type="number"></ion-input>
     </ion-item>
   </ion-list>
 
   <ion-list>
     <ion-item>
-      <ion-label>Monthly Budget</ion-label>
+      <ion-label>Presupuesto mensual</ion-label>
     </ion-item>
 
     <ion-item *ngFor="let budget of monthlyBudget">
-      <ion-label>{{ budget.budget }}</ion-label> <!-- Aquí estaba el error: cambiado 'budget.category' por 'budget.budget' -->
-      <ion-note slot="end" color="primary">{{ budget.amount }}</ion-note>
+      <ion-label>{{ budget.budget }}</ion-label>
+      <ion-input [(ngModel)]="budget.amount" placeholder="0" type="number"></ion-input>
     </ion-item>
   </ion-list>
 </ion-content>

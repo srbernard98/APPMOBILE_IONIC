@@ -26,6 +26,10 @@ const routes: Routes = [
   {
     path: 'mi-cuenta',
     loadChildren: () => import('./mi-cuenta/mi-cuenta.module').then( m => m.MiCuentaPageModule)
+  },
+  {
+    path: 'crear-cuenta',
+    loadChildren: () => import('./crear-cuenta/crear-cuenta.module').then( m => m.CrearCuentaPageModule)
   }
 ];
 

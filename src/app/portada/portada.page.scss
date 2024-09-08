@@ -1,6 +1,6 @@
 ion-segment {
     --indicator-color: #ffffff;
-    --background: #6c63ff;
+    --background: #OE9AA7;
     margin-bottom: 20px;
   }
   
@@ -47,5 +47,11 @@ ion-segment {
   
   ion-note {
     font-weight: bold;
+  }
+  canvas {
+    display: block;
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
   }
   

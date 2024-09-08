@@ -1,51 +1,48 @@
-.home-page {
-  background-color: #007BFF; /* Azul primario */
-  height: 100%;
-}
-
-ion-content {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%; /* Asegura que el contenido se centre verticalmente */
-}
-
-form {
-  width: 90%;
-  max-width: 400px;
-  background-color: #ffffff; /* Fondo blanco para el formulario */
+.login-container {
   padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+  text-align: center;
+}
+
+.logo-container img {
+  width: 80px;
+  margin: 0 auto;
 }
 
 ion-item {
-  margin-bottom: 16px;
+  --background: transparent;
+  border-bottom: 1px solid #ddd;
+  margin: 10px 0;
 }
 
-ion-item ion-input {
-  border: none; /* Sin borde */
-  border-radius: 4px;
-  padding: 10px; /* Espaciado interno */
-  font-size: 16px;
-  text-align: center; /* Centra el texto */
-  background-color: #141111;
-  color: #fff; /* Texto blanco */
-  transition: all 0.3s ease-in-out; /* Transición suave */
+ion-label {
+  color: #ff7e5f;
 }
 
-ion-item ion-input::placeholder {
-  color: #ffffff; /* Color del placeholder */
+ion-input {
+  font-size: 1.1em;
+  padding: 15px 0;
 }
 
-/* Estilo cuando el campo está enfocado */
-ion-item ion-input:focus,
-ion-item ion-input:focus-within {
-  background-color: hsl(52, 77%, 68%); /* Fondo ligeramente diferente para el enfoque */
-  transform: scale(1.05); /* Agranda el campo */
-  box-shadow: 0 0 8px rgba(0, 123, 255, 0.5); /* Resplandor */
+ion-button {
+  margin-top: 20px;
+  border-radius: 50px;
+  --background: linear-gradient(to right, #ff7e5f, #feb47b);
 }
 
-ion-item ion-label {
-  display: none; /* Oculta las etiquetas ya que se usan placeholders */
+.forgot-password {
+  font-size: 0.9em;
+  margin-top: 10px;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.create-account {
+  margin-top: 20px;
+  color: #666;
+}
+
+.create-account a {
+  color: #ff7e5f;
+  text-decoration: none;
+  font-weight: bold;
 }
