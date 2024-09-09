@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-newuser',
@@ -13,41 +12,41 @@ export class NewUserPage {
   password: string = '';
   confirmPassword: string = '';
 
-  constructor(
-    private router: Router,
-    private alertController: AlertController
-  ) {}
+  constructor(private router: Router) {}
 
-  async onSubmit() {
+  onSubmit() {
     if (this.password !== this.confirmPassword) {
-      // Mostrar un error si las contraseñas no coinciden
-      const alert = await this.alertController.create({
-        header: 'Error',
-        message: 'Las contraseñas no coinciden.',
-        buttons: ['OK']
-      });
-      await alert.present();
+      alert('Las contraseñas no coinciden');
       return;
     }
 
-    // Aquí puedes añadir la lógica para crear la nueva cuenta
+    // Validar la contraseña con las reglas definidas (opcional)
+    if (!this.isPasswordValid(this.password)) {
+      alert('La contraseña debe tener al menos 4 números, 3 caracteres especiales y 1 letra mayúscula.');
+      return;
+    }
 
-    // Mostrar un pop-up indicando que la cuenta fue creada con éxito
-    const alert = await this.alertController.create({
-      header: 'Éxito',
-      message: 'Cuenta creada con éxito.',
-      buttons: [
-        {
-          text: 'OK',
-          handler: () => {
-            // Redirigir a la página de login
-            this.router.navigate(['/login']);
-          }
-        }
-      ]
-    });
+    // Obtener la lista actual de usuarios desde localStorage
+    const users = JSON.parse(localStorage.getItem('users') || '[]');
 
-    await alert.present();
+    // Agregar el nuevo usuario
+    users.push({ email: this.email, username: this.username, password: this.password });
+
+    // Guardar la lista actualizada de usuarios en localStorage
+    localStorage.setItem('users', JSON.stringify(users));
+    console.log(users);
+
+    alert('Usuario registrado exitosamente');
+    this.router.navigate(['/login']);
+  }
+
+  // Función para validar la contraseña
+  isPasswordValid(password: string): boolean {
+    const hasFourNumbers = /(?=(.*\d){4})/;         // Al menos 4 dígitos
+    const hasThreeSpecialChars = /(?=(.*[!@#$%^&*()\-_=+{};:,<.>]){3})/; // Al menos 3 caracteres especiales
+    const hasOneUpperCase = /(?=.*[A-Z])/;          // Al menos 1 letra mayúscula
+
+    return hasFourNumbers.test(password) && hasThreeSpecialChars.test(password) && hasOneUpperCase.test(password);
   }
 
   cancel() {
