@@ -12,15 +12,6 @@ export class PortadaPage {
   topSpending: { category: string, amount: number }[] = [];
   monthlyBudget: { budget: string, amount: number }[] = [];
 
-  // Datos del gráfico
-  doughnutChartLabels: string[] = ['Alimentación', 'Transporte', 'Entretenimiento'];
-  doughnutChartData: number[] = [150, 100, 50]; // Valores iniciales
-  doughnutChartType: string = 'doughnut';
-  chartOptions: any = {
-    responsive: true,
-    maintainAspectRatio: false
-  };
-
   constructor(private navCtrl: NavController) {
     const date = new Date();
     this.currentMonth = date.toLocaleString('default', { month: 'long' });

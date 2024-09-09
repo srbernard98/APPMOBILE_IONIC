@@ -5,14 +5,6 @@
 </ion-header>
 
 <ion-content>
-  <div style="display: block">
-    <canvas baseChart
-            [data]="doughnutChartData"
-            [labels]="doughnutChartLabels"
-            [chartType]="doughnutChartType"
-            [options]="chartOptions">
-    </canvas>
-  </div>
 
   <ion-list>
     <ion-item>
@@ -35,4 +27,5 @@
       <ion-input [(ngModel)]="budget.amount" placeholder="0" type="number"></ion-input>
     </ion-item>
   </ion-list>
+
 </ion-content>

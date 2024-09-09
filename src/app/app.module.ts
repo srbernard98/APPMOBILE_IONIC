@@ -5,7 +5,6 @@ import { RouteReuseStrategy } from '@angular/router';
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { ChartsModule } from 'ng2-charts'; // Importa ChartsModule desde 'ng2-charts'
 
 @NgModule({
   declarations: [AppComponent],
@@ -13,7 +12,6 @@ import { ChartsModule } from 'ng2-charts'; // Importa ChartsModule desde 'ng2-ch
     BrowserModule,
     IonicModule.forRoot(),
     AppRoutingModule,
-    ChartsModule // Agrega ChartsModule aquí
   ],
   providers: [
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
