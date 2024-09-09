@@ -1,44 +1,28 @@
 <ion-header>
-  <ion-toolbar color="light">
-    <ion-title>Sign Up</ion-title>
+  <ion-toolbar>
+    <ion-title>Crear Cuenta</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <div class="signup-container">
-    <div class="avatar-container">
-      <ion-avatar>
-        <img src="assets/avatar.png" />
-      </ion-avatar>
-      <ion-icon name="add-circle" class="nick-name"></ion-icon>
-    </div>
+  <div class="create-account-container">
+    <form (ngSubmit)="onCreateAccount()">
+      <ion-item>
+        <ion-label position="floating">Username</ion-label>
+        <ion-input [(ngModel)]="username" name="username" type="text" required></ion-input>
+      </ion-item>
 
-    <ion-item>
-      <ion-input placeholder="Nombre"></ion-input>
-    </ion-item>
+      <ion-item>
+        <ion-label position="floating">Password</ion-label>
+        <ion-input [(ngModel)]="password" name="password" type="password" required></ion-input>
+      </ion-item>
 
-    <ion-item>
-      <ion-input placeholder="Apellidos"></ion-input>
-    </ion-item>
+      <ion-item>
+        <ion-label position="floating">Confirm Password</ion-label>
+        <ion-input [(ngModel)]="confirmPassword" name="confirmPassword" type="password" required></ion-input>
+      </ion-item>
 
-    <ion-item>
-      <ion-input type="email" placeholder="Correo"></ion-input>
-    </ion-item>
-
-    <ion-item>
-      <ion-input type="tel" placeholder="Celular"></ion-input>
-    </ion-item>
-
-    <ion-item>
-      <ion-input type="password" placeholder="Contraseña"></ion-input>
-    </ion-item>
-
-    <ion-item lines="none">
-      <ion-checkbox slot="start"></ion-checkbox>
-      <ion-label>I accept all terms and conditions</ion-label>
-    </ion-item>
-
-    <ion-button expand="block" color="primary">SIGN IN</ion-button>
-
+      <ion-button expand="full" type="submit">Crear Cuenta</ion-button>
+    </form>
   </div>
 </ion-content>

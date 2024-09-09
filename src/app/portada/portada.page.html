@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar color="primary">
-    <ion-title>Mis finanzas</ion-title>
+    <ion-title>Finanzas de {{ currentMonth }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -11,20 +11,22 @@
       <ion-label>Gastos principales</ion-label>
     </ion-item>
 
-    <ion-item *ngFor="let category of topSpending">
-      <ion-label>{{ category.category }}</ion-label>
-      <ion-input [(ngModel)]="category.amount" placeholder="0" type="number"></ion-input>
+    <!-- Listado de categorías de gasto -->
+    <ion-item *ngFor="let category of topSpending; let i = index">
+      <ion-label class="text-start">{{ category.category }}</ion-label>
+      <ion-input class="text-end" [(ngModel)]="category.amount" placeholder="0" type="number"></ion-input>
+      <ion-button color="danger" (click)="removeCategory(i)" slot="end">Eliminar</ion-button>
     </ion-item>
-  </ion-list>
 
-  <ion-list>
+    <!-- Botón para agregar una nueva categoría de gasto -->
     <ion-item>
-      <ion-label>Presupuesto mensual</ion-label>
+      <ion-button expand="full" (click)="addCategory()">Agregar Gasto</ion-button>
     </ion-item>
 
-    <ion-item *ngFor="let budget of monthlyBudget">
-      <ion-label>{{ budget.budget }}</ion-label>
-      <ion-input [(ngModel)]="budget.amount" placeholder="0" type="number"></ion-input>
+    <!-- Casilla del total de gastos -->
+    <ion-item>
+      <ion-label class="text-start">Total de Gastos del Mes</ion-label>
+      <ion-input class="text-end" [value]="calculateTotal()" readonly></ion-input>
     </ion-item>
   </ion-list>
 
