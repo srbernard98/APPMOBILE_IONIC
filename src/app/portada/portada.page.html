@@ -15,7 +15,7 @@
     <ion-item *ngFor="let category of topSpending; let i = index">
       <ion-label class="text-start">{{ category.category }}</ion-label>
       <ion-input class="text-end" [(ngModel)]="category.amount" placeholder="0" type="number"></ion-input>
-      <ion-button color="danger" (click)="removeCategory(i)" slot="end">Eliminar</ion-button>
+      <ion-button color="danger" (click)="removeCategory(i)" slot="end">X</ion-button>
     </ion-item>
 
     <!-- Botón para agregar una nueva categoría de gasto -->

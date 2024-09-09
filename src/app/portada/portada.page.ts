@@ -23,14 +23,14 @@ export class PortadaPage implements OnInit {
   ngOnInit() {
     // Inicialización de las variables con datos de ejemplo
     this.topSpending = [
-      { category: 'Alimentación', amount: 150 },
-      { category: 'Transporte', amount: 100 },
-      { category: 'Entretenimiento', amount: 50 }
+      { category: 'Alimentación', amount: 0 },
+      { category: 'Transporte', amount: 0 },
+      { category: 'Entretenimiento', amount: 0 }
     ];
 
     this.monthlyBudget = [
-      { budget: 'Presupuesto mensual de alimentación', amount: 200 },
-      { budget: 'Presupuesto mensual de transporte', amount: 120 }
+      { budget: 'Presupuesto mensual de alimentación', amount: 0 },
+      { budget: 'Presupuesto mensual de transporte', amount: 0 }
     ];
   }
 
