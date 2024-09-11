@@ -1,0 +1,45 @@
+ion-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centra verticalmente el contenido */
+    align-items: center; /* Centra horizontalmente el contenido */
+    padding: 0; /* Elimina el padding por defecto para un control más preciso */
+  }
+  
+  .logo-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px; /* Espacio debajo del logo */
+  }
+  
+  .logo {
+    max-width: 150px; /* Ajusta según el tamaño deseado */
+    height: auto;
+    border-radius: 50%; /* Hace que la imagen sea redonda */
+    object-fit: cover; /* Ajusta la imagen para que llene el contenedor circular */
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 400px; /* Puedes ajustar el ancho máximo del formulario */
+    padding: 0 16px; /* Espaciado horizontal para el formulario */
+  }
+  
+  ion-item {
+    width: 100%; /* Asegura que los items del formulario ocupen el ancho completo del contenedor */
+  }
+  
+  ion-button {
+    width: 100%; /* Asegura que el botón ocupe el ancho completo del contenedor */
+    max-width: 200px; /* Puedes ajustar el ancho máximo del botón si lo deseas */
+  }
+  .cancel-button {
+    position: fixed;
+    bottom: 16px;
+    left: 16px;
+  }
+  

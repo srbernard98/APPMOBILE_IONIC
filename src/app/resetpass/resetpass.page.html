@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Restablecer Contraseña</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- Contenedor del logo -->
+  <div class="logo-container">
+    <img src="assets/img/LOGO_FUNDFLOE.jpg" alt="Logo de la App" class="logo" />
+  </div>
+
+  <!-- Formulario para restablecer la contraseña -->
+  <form (ngSubmit)="onConfirm()" #resetForm="ngForm">
+    <ion-item>
+      <ion-label position="floating">Correo Electrónico</ion-label>
+      <ion-input type="email" required [(ngModel)]="email" name="email"></ion-input>
+    </ion-item>
+
+    <ion-button expand="block" type="submit" [disabled]="!resetForm.valid">Confirmar</ion-button>
+  </form>
+  
+  <!-- Botón de Cancelar -->
+  <ion-button (click)="cancel()" class="cancel-button">Cancelar</ion-button>
+  
+</ion-content>

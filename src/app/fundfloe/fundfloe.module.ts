@@ -4,17 +4,17 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { AccessPageRoutingModule } from './access-routing.module';
+import { FundfloePageRoutingModule } from './fundfloe-routing.module';
 
-import { AccessPage } from './access.page';
+import { FundfloePage } from './fundfloe.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    AccessPageRoutingModule
+    FundfloePageRoutingModule
   ],
-  declarations: [AccessPage]
+  declarations: [FundfloePage]
 })
-export class AccessPageModule {}
+export class FundfloePageModule {}
