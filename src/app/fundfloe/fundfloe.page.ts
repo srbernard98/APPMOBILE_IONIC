@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
-
+import { Router, ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-fundfloe',
   templateUrl: './fundfloe.page.html',
@@ -17,7 +16,21 @@ export class FundfloePage {
     { name: 'information-circle', title: 'Información' }
   ];
 
-  constructor(private router: Router) {}
+  data: any = {};
+
+  constructor(private router: Router,
+
+    private activeroute: ActivatedRoute,
+  ) 
+  {
+    this.activeroute.queryParams.subscribe(params => {
+      const navigation = this.router.getCurrentNavigation();
+      if (navigation && navigation.extras.state && navigation.extras.state) {
+        this.data = navigation.extras.state;
+      }
+    });
+
+  }
 
   logout() {
     this.router.navigate(['/login']);

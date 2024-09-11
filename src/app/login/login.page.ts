@@ -1,30 +1,39 @@
-import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Router, NavigationExtras } from '@angular/router';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
   styleUrls: ['./login.page.scss'],
 })
-export class LoginPage {
+export class LoginPage implements OnInit {
   email: string = '';
   password: string = '';
+  ngForm!: FormGroup;
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private fb: FormBuilder) {}
+
+  ngOnInit() {
+    // Inicializa el formulario en el ciclo de vida OnInit
+    this.ngForm = this.fb.group({
+      usuario: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, this.passwordValidator.bind(this)]],
+    });
+  }
 
   onSubmit() {
-    // Obtener la lista de usuarios desde localStorage
-    const users = JSON.parse(localStorage.getItem('users') || '[]');
+    if (this.ngForm.valid) {
+      // Simular inicio de sesión exitoso
+      const navigationExtras: NavigationExtras = {
+        state: { user: this.ngForm.value },
+      };
 
-    // Verificar si el usuario y la contraseña son correctos
-    const user = users.find((user: any) => user.email === this.email && user.password === this.password);
-
-    if (user) {
-      console.log('Inicio de sesión exitoso');
-      this.router.navigate(['/fundfloe']);
+      // Navegar a la página principal con los datos del usuario
+      this.router.navigate(['/fundfloe'], navigationExtras);
     } else {
-      console.error('Correo o contraseña incorrectos');
       alert('Correo o contraseña incorrectos');
+      console.error('Formulario inválido');
     }
   }
 
@@ -36,6 +45,15 @@ export class LoginPage {
   newUserAccount() {
     console.log('New User Account');
     this.router.navigate(['/newuser']);
+  }
+
+  // Validación de la contraseña
+  passwordValidator(control: any): { [key: string]: boolean } | null {
+    const password = control.value;
+    if (!this.isPasswordValid(password)) {
+      return { invalidPassword: true };
+    }
+    return null;
   }
 
   // Función para validar la contraseña

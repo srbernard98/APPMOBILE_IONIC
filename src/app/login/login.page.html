@@ -6,18 +6,18 @@
     </div>
 
     <!-- Formulario de inicio de sesión -->
-    <form (ngSubmit)="onSubmit()" #loginForm="ngForm" class="login-container">
+    <form (ngSubmit)="onSubmit()" class="login-container" [formGroup]="ngForm">
       <ion-item>
         <ion-label position="floating">Correo Electrónico</ion-label>
-        <ion-input type="email" required [(ngModel)]="email" name="email"></ion-input>
+        <ion-input type="email" required [(ngModel)]="email" name="email" formControlName="usuario"></ion-input>
       </ion-item>
 
       <ion-item>
         <ion-label position="floating">Contraseña</ion-label>
-        <ion-input type="password" required [(ngModel)]="password" name="password"></ion-input>
+        <ion-input type="password" required [(ngModel)]="password" name="password" formControlName="password"></ion-input>
       </ion-item>
 
-      <ion-button expand="block" type="submit" [disabled]="!loginForm.valid">Iniciar Sesión</ion-button>
+      <ion-button expand="block" type="submit" [disabled]="ngForm.invalid">Iniciar Sesión</ion-button>
 
       <div class="footer-buttons">
         <ion-button fill="clear" (click)="resetPassword()">RESTABLECER CONTRASEÑA</ion-button>

@@ -6,8 +6,7 @@
 
 <ion-content class="ion-padding">
   <div class="welcome-container">
-    <p>Bienvenido Sr/a: {{ username }}</p>
-  </div>
+    <p *ngIf="data.user.usuario">Bienvenido {{ data.user.usuario }}  </p></div>
 
   <div class="icons-container">
     <ion-grid>
