@@ -1,0 +1,61 @@
+ion-content {
+  --background: #F3F4F6; /* Fondo suave y limpio */
+}
+
+.header-section {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.welcome-message {
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.subtitle {
+  font-size: 1rem;
+  color: #666;
+}
+
+.summary-section {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 30px;
+}
+
+.summary-box {
+  background-color: white;
+  border-radius: 15px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+  text-align: center;
+  width: 45%;
+}
+
+.summary-box h3 {
+  font-size: 1.1rem;
+  color: #333;
+}
+
+.balance-amount {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #0CB7F2;
+}
+
+ion-input {
+  --background: white;
+  --padding-start: 10px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.action-button {
+  margin: 20px;
+  background-color: #0CB7F2;
+  border-radius: 20px;
+  color: white;
+  font-size: 1.1rem;
+}

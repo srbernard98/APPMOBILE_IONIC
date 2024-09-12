@@ -21,7 +21,7 @@ export class FundfloePage {
   constructor(private router: Router,
 
     private activeroute: ActivatedRoute,
-  ) 
+  )
   {
     this.activeroute.queryParams.subscribe(params => {
       const navigation = this.router.getCurrentNavigation();

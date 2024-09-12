@@ -2,14 +2,14 @@
     text-align: center;
     margin-bottom: 20px;
   }
-  
+
   .icons-container {
     display: flex;
     justify-content: center;
     flex-direction: column;
     align-items: center;
   }
-  
+
   ion-card {
     width: 100px;
     height: 100px;
@@ -19,18 +19,18 @@
     margin: 10px;
     border-radius: 50%;
   }
-  
+
   .icon {
     font-size: 40px;
   }
-  
+
   ion-card-content {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
   }
-  
+
   ion-footer {
     position: absolute;
     bottom: 0;

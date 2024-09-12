@@ -1,0 +1,81 @@
+<ion-menu side="start" contentId="main-content">
+  <ion-header>
+    <ion-toolbar color="primary">
+      <ion-title>Menú</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content>
+    <ion-list>
+      <ion-item button (click)="navigateTo('portada')">
+        <ion-icon name="home-outline" slot="start"></ion-icon>
+        <ion-label>Portada</ion-label>
+      </ion-item>
+      <ion-item button (click)="navigateTo('ingresos')">
+        <ion-icon name="cash-outline" slot="start"></ion-icon>
+        <ion-label>Ingresos</ion-label>
+      </ion-item>
+      <ion-item button (click)="navigateTo('gastos')">
+        <ion-icon name="cash-outline" slot="start"></ion-icon>
+        <ion-label>Gastos</ion-label>
+      </ion-item>
+      <ion-item button (click)="logout()">
+        <ion-icon name="log-out-outline" slot="start"></ion-icon>
+        <ion-label>Cerrar Sesión</ion-label>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-menu>
+
+<!-- Contenido de la página de gastos -->
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Gastos de {{ currentMonth }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content id="main-content" class="white-background">
+  <div class="header-section">
+    <h2>Total Gastos</h2>
+    <div class="summary-box">
+      <p class="total-amount">${{ totalExpenses | number: '1.2-2' }}</p>
+    </div>
+  </div>
+
+  <div class="form-container">
+    <ion-item class="form-item">
+      <ion-label position="stacked">Descripción</ion-label>
+      <ion-select placeholder="Seleccionar Gasto" [(ngModel)]="newExpenseDescription">
+        <ion-select-option value="Transporte">Transporte</ion-select-option>
+        <ion-select-option value="Alimentación">Alimentación</ion-select-option>
+        <ion-select-option value="Ocio">Ocio</ion-select-option>
+        <ion-select-option value="Otro">Otro</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item class="form-item" *ngIf="newExpenseDescription === 'Otro'">
+      <ion-label position="stacked">Especificar Gasto</ion-label>
+      <ion-input placeholder="Escribe tu gasto" [(ngModel)]="otherExpense" style="color: black;"></ion-input>
+    </ion-item>
+    <ion-item class="form-item">
+      <ion-label position="stacked">Monto</ion-label>
+      <ion-input placeholder="0.00" [(ngModel)]="newExpenseAmount" type="number" min="0" style="color: black;" inputmode="decimal"></ion-input>
+    </ion-item>
+    <ion-button expand="full" class="action-button" (click)="addExpense()">Agregar Gasto</ion-button>
+  </div>
+
+  <ion-list>
+    <!-- Lista de gastos añadidos con opción de eliminar deslizando -->
+    <ion-item-sliding *ngFor="let expense of expenses; let i = index">
+      <ion-item class="expense-item">
+        <ion-input placeholder="Descripción" [(ngModel)]="expense.description" style="color: black;"></ion-input>
+        <ion-input placeholder="Monto" [(ngModel)]="expense.amount" type="number" style="color: black;"></ion-input>
+      </ion-item>
+      <ion-item-options side="end">
+        <ion-item-option color="danger" (click)="removeExpense(i)">Eliminar</ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+</ion-content>
