@@ -68,7 +68,8 @@
               "progress": false
             }
           },
-          "defaultConfiguration": "production"
+          "defaultConfiguration": "production",
+          "allowedCommonJsDependencies": ["jquery"]
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",

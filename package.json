@@ -28,6 +28,7 @@
     "@capacitor/status-bar": "6.0.1",
     "@ionic/angular": "^8.0.0",
     "ionicons": "^7.0.0",
+    "jquery": "^3.7.1",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.2"
@@ -46,6 +47,7 @@
     "@ionic/angular-toolkit": "^11.0.1",
     "@types/estree": "^1.0.5",
     "@types/jasmine": "~5.1.0",
+    "@types/jquery": "^3.5.30",
     "@typescript-eslint/eslint-plugin": "^6.0.0",
     "@typescript-eslint/parser": "^6.0.0",
     "eslint": "^8.57.0",
