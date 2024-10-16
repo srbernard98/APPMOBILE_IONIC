@@ -11,13 +11,13 @@
         <ion-icon name="home-outline" slot="start"></ion-icon>
         <ion-label>Portada</ion-label>
       </ion-item>
-      <ion-item button (click)="navigateTo('gastos')">
-        <ion-icon name="cash-outline" slot="start"></ion-icon>
-        <ion-label>Gastos</ion-label>
-      </ion-item>
       <ion-item button (click)="navigateTo('ingresos')">
         <ion-icon name="cash-outline" slot="start"></ion-icon>
         <ion-label>Ingresos</ion-label>
+      </ion-item>
+      <ion-item button (click)="navigateTo('gastos')">
+        <ion-icon name="cash-outline" slot="start"></ion-icon>
+        <ion-label>Gastos</ion-label>
       </ion-item>
       <ion-item button (click)="logout()">
         <ion-icon name="log-out-outline" slot="start"></ion-icon>
@@ -40,17 +40,29 @@
 <ion-content id="main-content" class="white-background">
   <div class="header-section">
     <h2>Total Ingresos</h2>
-    <p class="total-amount">${{ totalIncome | number: '1.2-2' }}</p>
+    <div class="summary-box">
+      <!-- Mostrar el total de ingresos en pesos chilenos (CLP) -->
+      <p class="total-amount">{{ totalIncomes | currency:'CLP':'symbol':'1.0-0' }}</p>
+    </div>
   </div>
 
   <div class="form-container">
     <ion-item class="form-item">
       <ion-label position="stacked">Descripción</ion-label>
-      <ion-input placeholder="Escribe aquí" [(ngModel)]="newIncomeDescription"></ion-input>
+      <ion-select placeholder="Seleccionar Ingreso" [(ngModel)]="newIncomeDescription">
+        <ion-select-option value="Sueldo">Sueldo</ion-select-option>
+        <ion-select-option value="Inversión">Inversión</ion-select-option>
+        <ion-select-option value="Otros">Otros</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item class="form-item" *ngIf="newIncomeDescription === 'Otros'">
+      <ion-label position="stacked">Especificar Ingreso</ion-label>
+      <ion-input placeholder="Escribe tu ingreso" [(ngModel)]="otherIncome"></ion-input>
     </ion-item>
     <ion-item class="form-item">
       <ion-label position="stacked">Monto</ion-label>
-      <ion-input placeholder="0.00" [(ngModel)]="newIncomeAmount" type="number" min="0"></ion-input>
+      <!-- El monto se mostrará en pesos chilenos (CLP) -->
+      <ion-input placeholder="0.00" [(ngModel)]="newIncomeAmount" type="number" min="0" inputmode="decimal"></ion-input>
     </ion-item>
     <ion-button expand="full" class="action-button" (click)="addIncome()">Agregar Ingreso</ion-button>
   </div>
@@ -59,8 +71,11 @@
     <!-- Lista de ingresos añadidos con opción de eliminar deslizando -->
     <ion-item-sliding *ngFor="let income of incomes; let i = index">
       <ion-item class="income-item">
-        <ion-input placeholder="Descripción" [(ngModel)]="income.description" style="color: black;"></ion-input>
-        <ion-input placeholder="Monto" [(ngModel)]="income.amount" type="number" style="color: black;"></ion-input>
+        <!-- Descripción del ingreso -->
+        <ion-input placeholder="Descripción" [(ngModel)]="income.description"></ion-input>
+        <!-- Mostrar el monto de cada ingreso en pesos chilenos (CLP) -->
+        <ion-input placeholder="Monto" [(ngModel)]="income.amount" [ngModelOptions]="{ standalone: true }" type="number"></ion-input>
+        <p>{{ income.amount | currency:'CLP':'symbol':'1.0-0' }}</p>
       </ion-item>
       <ion-item-options side="end">
         <ion-item-option color="danger" (click)="removeIncome(i)">Eliminar</ion-item-option>

@@ -2,13 +2,14 @@ ion-content {
   --background: #F5F6FA; /* Fondo suave */
 }
 
+/* Sección del encabezado */
 .header-section {
   text-align: center;
   margin-top: 20px;
 }
 
 .header-section h2 {
-  color: #000; /* Texto "Total Gastos" en negro */
+  color: #000; /* Texto "Total Ingresos" en negro */
 }
 
 .summary-box {
@@ -27,10 +28,11 @@ ion-content {
   color: #0CB7F2;
 }
 
+/* Estilo del formulario */
 .form-container {
   margin: 20px;
   padding: 20px;
-  background-color: #050505;
+  background-color: #ffffff; /* Fondo blanco */
   border-radius: 15px;
   box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
 }
@@ -39,13 +41,14 @@ ion-content {
   margin-bottom: 15px;
 }
 
-ion-label {
-  font-weight: bold;
-  color: #333;
+/* Estilo de los inputs y select */
+ion-item {
+  --background: transparent !important; /* Asegurar fondo transparente en ion-item */
+  --inner-background: white; /* Fondo blanco para el contenido del input */
 }
 
 ion-input, ion-select {
-  --background: #ffffff;
+  --background: #ffffff !important; /* Fondo blanco para los inputs */
   --padding-start: 10px;
   border-radius: 10px;
   border: 1px solid #ddd;
@@ -54,6 +57,11 @@ ion-input, ion-select {
   color: #000; /* Texto visible en negro */
 }
 
+ion-input {
+  --background: #ffffff !important; /* Forzar fondo blanco en los inputs */
+}
+
+/* Estilo de los botones */
 .action-button {
   margin: 20px 0;
   background-color: #0CB7F2;
@@ -62,104 +70,11 @@ ion-input, ion-select {
   font-size: 1.1rem;
 }
 
+/* Estilo de los ítems (gastos e ingresos) */
 .expense-item, .income-item {
   background-color: #ffffff;
   border-radius: 10px;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
   margin-bottom: 10px;
   padding: 10px;
-}
-
-ion-item-sliding {
-  --ion-item-background: #fff;
-}
-
-ion-item-options {
-  --background: #EA4335; /* Rojo para eliminar al estilo iPhone */
-}
-
-ion-label, ion-input {
-  color: #333; /* Aseguramos visibilidad de las etiquetas */
-}
-
-:host {
-  --background: var(--ion-item-background, var(--ion-background-color, #fff));
-  --border-color: var(--ion-item-border-color, var(--ion-border-color, var(--ion-color-step-250, var(--ion-background-color-step-250, #c8c7cc))));
-}
-
-/* Estilos responsive */
-
-/* Móviles pequeños (pantallas de hasta 600px de ancho) */
-@media (max-width: 600px) {
-  .header-section h2 {
-    font-size: 1.2rem;
-  }
-
-  .summary-box {
-    width: 90%;
-    padding: 15px;
-  }
-
-  .total-amount {
-    font-size: 1.2rem;
-  }
-
-  .form-container {
-    margin: 10px;
-    padding: 15px;
-  }
-
-  .action-button {
-    font-size: 1rem;
-  }
-}
-
-/* Tabletas (pantallas de 601px a 900px de ancho) */
-@media (min-width: 601px) and (max-width: 900px) {
-  .header-section h2 {
-    font-size: 1.4rem;
-  }
-
-  .summary-box {
-    width: 80%;
-    padding: 20px;
-  }
-
-  .total-amount {
-    font-size: 1.4rem;
-  }
-
-  .form-container {
-    margin: 15px;
-    padding: 20px;
-  }
-
-  .action-button {
-    font-size: 1.1rem;
-  }
-}
-
-/* Escritorios y grandes tabletas (más de 900px de ancho) */
-@media (min-width: 901px) {
-  .header-section h2 {
-    font-size: 1.6rem;
-  }
-
-  .summary-box {
-    width: 60%;
-    padding: 30px;
-  }
-
-  .total-amount {
-    font-size: 1.6rem;
-  }
-
-  .form-container {
-    margin: 20px;
-    padding: 30px;
-  }
-
-  .action-button {
-    font-size: 1.2rem;
-  }
 }

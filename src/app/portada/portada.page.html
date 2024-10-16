@@ -1,30 +1,3 @@
-<ion-menu side="start" contentId="main-content">
-  <ion-header>
-    <ion-toolbar color="primary">
-      <ion-title>Menú</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <ion-content>
-    <ion-list>
-      <ion-item button (click)="navigateTo('gastos')">
-        <ion-icon name="card-outline" slot="start"></ion-icon>
-        <ion-label>Gastos</ion-label>
-      </ion-item>
-      <ion-item button (click)="navigateTo('ingresos')">
-        <ion-icon name="cash-outline" slot="start"></ion-icon>
-        <ion-label>Ingresos</ion-label>
-      </ion-item>
-      <!-- Botón de cerrar sesión -->
-      <ion-item button (click)="logout()">
-        <ion-icon name="log-out-outline" slot="start"></ion-icon>
-        <ion-label>Cerrar Sesión</ion-label>
-      </ion-item>
-    </ion-list>
-  </ion-content>
-</ion-menu>
-
-<!-- Contenido de la página de portada -->
 <ion-header>
   <ion-toolbar color="primary">
     <ion-buttons slot="start">
@@ -40,16 +13,39 @@
     <p class="subtitle">Toma el control de tus finanzas este mes.</p>
   </div>
 
-  <div class="summary-section">
-    <div class="summary-box">
-      <h3>Balance Actual</h3>
-      <p class="balance-amount">$0.00</p>
-    </div>
-    <div class="summary-box">
-      <h3>Metas del Mes</h3>
-      <ion-input placeholder="Escribe tus metas aquí"></ion-input>
-    </div>
-  </div>
+  <!-- Sección para ingresar montos y realizar conversiones -->
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Conversión de Moneda</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <!-- Input para monto en pesos chilenos -->
+      <ion-item>
+        <ion-label position="floating">Monto en CLP (Pesos Chilenos)</ion-label>
+        <ion-input [(ngModel)]="clpAmount" (ionInput)="convertFromCLP()" type="number"></ion-input>
+      </ion-item>
+      <p>Equivalente en Dólares: {{ usdAmount | number: '1.2-2' }} USD</p>
+
+      <!-- Input para monto en dólares -->
+      <ion-item>
+        <ion-label position="floating">Monto en USD (Dólares)</ion-label>
+        <ion-input [(ngModel)]="usdAmount" (ionInput)="convertFromUSD()" type="number"></ion-input>
+      </ion-item>
+      <p>Equivalente en Pesos Chilenos: {{ clpAmount | number: '1.0-0' }} CLP</p>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Card para mostrar el valor del dólar y el euro en tiempo real -->
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Valor en Tiempo Real</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <p>Valor del Dólar (USD): {{ dollarValue | number: '1.0-0' }} CLP</p>
+      <p>Valor del Euro (EUR): {{ euroValue | number: '1.2-2' }} EUR</p>
+    </ion-card-content>
+  </ion-card>
 
   <ion-button expand="full" class="action-button" (click)="navigateTo('gastos')">
     Ver Gastos

@@ -6,6 +6,7 @@ import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
+import { HttpClientModule } from '@angular/common/http';  // Importar HttpClientModule
 
 // Asegúrate de que la ruta es correcta
 import { MiModalComponent } from './mi-modal-component/mi-modal-component.component';
@@ -18,7 +19,8 @@ import { MiModalComponent } from './mi-modal-component/mi-modal-component.compon
   imports: [
     BrowserModule,
     IonicModule.forRoot(),
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule // Incluir HttpClientModule en imports
   ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],

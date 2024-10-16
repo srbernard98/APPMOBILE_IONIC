@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router } from '@angular/router'; // Importar Router
 
 @Component({
   selector: 'app-ingresos',
@@ -8,54 +8,50 @@ import { Router } from '@angular/router';
 })
 export class IngresosPage implements OnInit {
   currentMonth: string = '';
-  incomes: { description: string, amount: number }[] = [];
-  totalIncome: number = 0;
-
-  // Variables para el nuevo ingreso
+  totalIncomes: number = 0;
   newIncomeDescription: string = '';
   newIncomeAmount: number = 0;
+  otherIncome: string = '';
+  incomes: Array<{ description: string, amount: number }> = [];
 
-  constructor(private router: Router) {}
+  constructor(private router: Router) {} // Inyectar Router
 
   ngOnInit() {
     const date = new Date();
     const options: Intl.DateTimeFormatOptions = { month: 'long' };
     this.currentMonth = date.toLocaleDateString('es-ES', options);
-    this.calculateTotalIncome();
   }
 
+  // Función para la navegación entre páginas
   navigateTo(page: string) {
     this.router.navigate([`/${page}`]);
   }
 
+  // Función para cerrar sesión
   logout() {
     this.router.navigate(['/login']);
   }
 
-  // Función para agregar un nuevo ingreso
   addIncome() {
-    if (this.newIncomeDescription && this.newIncomeAmount > 0) {
+    const incomeDescription = this.newIncomeDescription === 'Otros' ? this.otherIncome : this.newIncomeDescription;
+    if (incomeDescription && this.newIncomeAmount > 0) {
       this.incomes.push({
-        description: this.newIncomeDescription,
+        description: incomeDescription,
         amount: this.newIncomeAmount,
       });
-
-      this.calculateTotalIncome();
-
-      // Limpiar los campos después de agregar el ingreso
-      this.newIncomeDescription = '';
-      this.newIncomeAmount = 0;
+      this.totalIncomes += this.newIncomeAmount;
+      this.resetForm();
     }
   }
 
-  // Función para eliminar un ingreso
   removeIncome(index: number) {
+    this.totalIncomes -= this.incomes[index].amount;
     this.incomes.splice(index, 1);
-    this.calculateTotalIncome();
   }
 
-  // Función para calcular el total de ingresos
-  calculateTotalIncome() {
-    this.totalIncome = this.incomes.reduce((sum, income) => sum + (income.amount || 0), 0);
+  resetForm() {
+    this.newIncomeDescription = '';
+    this.newIncomeAmount = 0;
+    this.otherIncome = '';
   }
 }
