@@ -15,14 +15,15 @@ export class NewUserPage {
   constructor(private router: Router) {}
 
   onSubmit() {
+    // Comprobar si las contraseñas coinciden
     if (this.password !== this.confirmPassword) {
       alert('Las contraseñas no coinciden');
       return;
     }
 
-    // Validar la contraseña con las reglas definidas (opcional)
+    // Validar la contraseña con las mismas reglas que en el login
     if (!this.isPasswordValid(this.password)) {
-      alert('La contraseña debe tener al menos 4 números, 3 caracteres especiales y 1 letra mayúscula.');
+      alert('La contraseña debe tener al menos 3 caracteres, 4 números y 1 mayúscula.');
       return;
     }
 
@@ -40,13 +41,13 @@ export class NewUserPage {
     this.router.navigate(['/login']);
   }
 
-  // Función para validar la contraseña
+  // Función para validar la contraseña (basada en la validación de login)
   isPasswordValid(password: string): boolean {
-    const hasFourNumbers = /(?=(.*\d){4})/;         // Al menos 4 dígitos
-    const hasThreeSpecialChars = /(?=(.*[!@#$%^&*()\-_=+{};:,<.>]){3})/; // Al menos 3 caracteres especiales
-    const hasOneUpperCase = /(?=.*[A-Z])/;          // Al menos 1 letra mayúscula
+    const minLength = password.length >= 3;  // Al menos 3 caracteres
+    const hasFourNumbers = (password.match(/\d/g) || []).length >= 4;  // Al menos 4 dígitos
+    const hasOneUpperCase = /[A-Z]/.test(password);  // Al menos una mayúscula
 
-    return hasFourNumbers.test(password) && hasThreeSpecialChars.test(password) && hasOneUpperCase.test(password);
+    return minLength && hasFourNumbers && hasOneUpperCase;
   }
 
   cancel() {

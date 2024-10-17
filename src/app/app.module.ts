@@ -8,23 +8,22 @@ import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';  // Importar HttpClientModule
 import { IonicStorageModule } from '@ionic/storage-angular';  // Importar IonicStorageModule
 
-// Asegúrate de que la ruta es correcta
-import { MiModalComponent } from './mi-modal-component/mi-modal-component.component';
+import { MiModalComponent } from './mi-modal-component/mi-modal-component.component';  // Asegúrate de que la ruta es correcta
 
 @NgModule({
   declarations: [
     AppComponent,
-    MiModalComponent // Declaramos el componente modal aquí
+    MiModalComponent  // Declaramos el componente modal aquí
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(),
     AppRoutingModule,
-    HttpClientModule, // Incluir HttpClientModule en imports
+    HttpClientModule,  // Incluir HttpClientModule en imports
     IonicStorageModule.forRoot()  // Inicializar el módulo de Storage
   ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA] // Añadimos el esquema para componentes personalizados
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]  // Añadimos el esquema para componentes personalizados
 })
 export class AppModule {}
