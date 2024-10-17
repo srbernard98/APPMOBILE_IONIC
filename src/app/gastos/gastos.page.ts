@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router'; // Asegúrate de importar Router
+import { Storage } from '@ionic/storage-angular';  // Importa Storage
 
 @Component({
   selector: 'app-gastos',
@@ -14,12 +15,20 @@ export class GastosPage implements OnInit {
   otherExpense: string = ''; // Para manejar el valor cuando el usuario elige "Otro"
   newExpenseAmount: number = 0;
 
-  constructor(private router: Router) {} // Inyectar el servicio Router
+  constructor(private router: Router, private storage: Storage) {} // Inyectar el servicio Router y Storage
 
-  ngOnInit() {
+  async ngOnInit() {
     const date = new Date();
     const options: Intl.DateTimeFormatOptions = { month: 'long' };
     this.currentMonth = date.toLocaleDateString('es-ES', options);
+
+    // Inicializar el almacenamiento
+    await this.storage.create();
+
+    // Cargar gastos totales desde el Storage
+    this.totalExpenses = await this.storage.get('totalGastos') || 0;
+
+    // Calcular el total de los gastos actuales si los hay
     this.calculateTotalExpenses();
   }
 
@@ -61,5 +70,8 @@ export class GastosPage implements OnInit {
 
   calculateTotalExpenses() {
     this.totalExpenses = this.expenses.reduce((sum, expense) => sum + (expense.amount || 0), 0);
+
+    // Guardar el total de gastos en Storage
+    this.storage.set('totalGastos', this.totalExpenses);
   }
 }

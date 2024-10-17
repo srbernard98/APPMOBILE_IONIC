@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router'; // Importar Router
+import { Storage } from '@ionic/storage-angular'; // Importar Storage
 
 @Component({
   selector: 'app-ingresos',
@@ -14,12 +15,18 @@ export class IngresosPage implements OnInit {
   otherIncome: string = '';
   incomes: Array<{ description: string, amount: number }> = [];
 
-  constructor(private router: Router) {} // Inyectar Router
+  constructor(private router: Router, private storage: Storage) {} // Inyectar Router y Storage
 
-  ngOnInit() {
+  async ngOnInit() {
     const date = new Date();
     const options: Intl.DateTimeFormatOptions = { month: 'long' };
     this.currentMonth = date.toLocaleDateString('es-ES', options);
+
+    // Inicializar el almacenamiento
+    await this.storage.create();
+
+    // Cargar los ingresos totales desde el Storage
+    this.totalIncomes = await this.storage.get('totalIngresos') || 0;
   }
 
   // Función para la navegación entre páginas
@@ -39,7 +46,12 @@ export class IngresosPage implements OnInit {
         description: incomeDescription,
         amount: this.newIncomeAmount,
       });
+
       this.totalIncomes += this.newIncomeAmount;
+
+      // Guardar el total de ingresos en Storage
+      this.storage.set('totalIngresos', this.totalIncomes);
+
       this.resetForm();
     }
   }
@@ -47,6 +59,9 @@ export class IngresosPage implements OnInit {
   removeIncome(index: number) {
     this.totalIncomes -= this.incomes[index].amount;
     this.incomes.splice(index, 1);
+
+    // Guardar el total de ingresos actualizado en Storage
+    this.storage.set('totalIngresos', this.totalIncomes);
   }
 
   resetForm() {

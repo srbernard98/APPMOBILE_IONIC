@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';  // Importar HttpClientModule
 import { IonicStorageModule } from '@ionic/storage-angular';  // Importar IonicStorageModule
+import { SQLite } from '@ionic-native/sqlite/ngx';  // Importar SQLite
 
 import { MiModalComponent } from './mi-modal-component/mi-modal-component.component';  // Asegúrate de que la ruta es correcta
 
@@ -20,9 +21,12 @@ import { MiModalComponent } from './mi-modal-component/mi-modal-component.compon
     IonicModule.forRoot(),
     AppRoutingModule,
     HttpClientModule,  // Incluir HttpClientModule en imports
-    IonicStorageModule.forRoot()  // Inicializar el módulo de Storage
+    IonicStorageModule.forRoot(),  // Inicializar el módulo de Storage
   ],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
+  providers: [
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    SQLite  // Incluir SQLite en providers
+  ],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]  // Añadimos el esquema para componentes personalizados
 })

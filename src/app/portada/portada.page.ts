@@ -17,6 +17,10 @@ export class PortadaPage implements OnInit {
   apiKey: string = '57f02538933fb88c23fa3187e222ec59';
   username: string = 'Usuario';  // Almacena el nombre del usuario, por defecto 'Usuario'
 
+  totalIngresos: number = 0;  // Almacenar ingresos
+  totalGastos: number = 0;    // Almacenar gastos
+  balanceMensual: number = 0; // Balance entre ingresos y gastos
+
   constructor(private router: Router, private http: HttpClient, private storage: Storage) {}
 
   async ngOnInit() {
@@ -30,8 +34,18 @@ export class PortadaPage implements OnInit {
     // Obtener el nombre del usuario desde Ionic Storage
     this.username = await this.storage.get('username') || 'Usuario';  // Si no existe, se muestra 'Usuario' por defecto
 
-    // Obtener datos de CurrencyLayer en tiempo real y simular algunos valores con JSON-server
+    // Obtener datos de CurrencyLayer en tiempo real
     this.getRealTimeRates();
+  }
+
+  // Este método se llama cada vez que la vista entra en pantalla
+  async ionViewWillEnter() {
+    // Obtener los ingresos y gastos desde Storage
+    this.totalIngresos = await this.storage.get('totalIngresos') || 0;
+    this.totalGastos = await this.storage.get('totalGastos') || 0;
+
+    // Calcular el balance del mes
+    this.balanceMensual = this.totalIngresos - this.totalGastos;
   }
 
   // Función para obtener los tipos de cambio desde la API de CurrencyLayer
@@ -47,13 +61,6 @@ export class PortadaPage implements OnInit {
       }
     }, error => {
       console.error('Error en la solicitud a la API de CurrencyLayer', error);
-    });
-
-    // Obtener datos simulados de JSON-server
-    this.http.get('http://localhost:3000/exchangeRates').subscribe((data: any) => {
-      console.log('Datos simulados de JSON-server:', data);
-    }, error => {
-      console.error('Error al obtener datos de JSON-server', error);
     });
   }
 

@@ -14,6 +14,18 @@
     <p class="subtitle">Toma el control de tus finanzas.</p>
   </div>
 
+  <!-- Nueva card para el resumen mensual -->
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Resumen del Mes</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p>Ingresos Totales: {{ totalIngresos | number:'1.0-0' }} CLP</p>
+      <p>Gastos Totales: {{ totalGastos | number:'1.0-0' }} CLP</p>
+      <p>Balance del Mes: {{ balanceMensual | number:'1.0-0' }} CLP</p>
+    </ion-card-content>
+  </ion-card>
+
   <!-- Sección para ingresar montos y realizar conversiones -->
   <ion-card>
     <ion-card-header>
@@ -25,14 +37,14 @@
         <ion-label position="floating">Monto en CLP (Pesos Chilenos)</ion-label>
         <ion-input [(ngModel)]="clpAmount" (ionInput)="convertFromCLP()" type="number"></ion-input>
       </ion-item>
-      <p>Equivalente en Dólares: {{ usdAmount | number: '1.2-2' }} USD</p>
+      <p>Equivalente en Dólares: {{ usdAmount | number:'1.2-2' }} USD</p>
 
       <!-- Input para monto en dólares -->
       <ion-item>
         <ion-label position="floating">Monto en USD (Dólares)</ion-label>
         <ion-input [(ngModel)]="usdAmount" (ionInput)="convertFromUSD()" type="number"></ion-input>
       </ion-item>
-      <p>Equivalente en Pesos Chilenos: {{ clpAmount | number: '1.0-0' }} CLP</p>
+      <p>Equivalente en Pesos Chilenos: {{ clpAmount | number:'1.0-0' }} CLP</p>
     </ion-card-content>
   </ion-card>
 
@@ -43,8 +55,8 @@
     </ion-card-header>
 
     <ion-card-content>
-      <p>Valor del Dólar (USD): {{ dollarValue | number: '1.0-0' }} CLP</p>
-      <p>Valor del Euro (EUR): {{ euroValue | number: '1.2-2' }} EUR</p>
+      <p>Valor del Dólar (USD): {{ dollarValue | number:'1.0-0' }} CLP</p>
+      <p>Valor del Euro (EUR): {{ euroValue | number:'1.2-2' }} EUR</p>
     </ion-card-content>
   </ion-card>
 
