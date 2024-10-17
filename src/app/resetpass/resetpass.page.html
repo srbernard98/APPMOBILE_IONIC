@@ -14,13 +14,13 @@
   <form (ngSubmit)="onConfirm()" #resetForm="ngForm">
     <ion-item>
       <ion-label position="floating">Correo Electrónico</ion-label>
-      <ion-input type="email" required [(ngModel)]="email" name="email"></ion-input>
+      <ion-input type="email" required email [(ngModel)]="email" name="email"></ion-input>
     </ion-item>
 
     <ion-button expand="block" type="submit" [disabled]="!resetForm.valid">Confirmar</ion-button>
   </form>
-  
+
   <!-- Botón de Cancelar -->
-  <ion-button (click)="cancel()" class="cancel-button">Cancelar</ion-button>
-  
+  <ion-button expand="block" fill="clear" (click)="cancel()" class="cancel-button">Cancelar</ion-button>
+
 </ion-content>

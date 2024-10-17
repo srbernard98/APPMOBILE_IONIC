@@ -3,10 +3,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
 
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
-
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';  // Importar HttpClientModule
+import { IonicStorageModule } from '@ionic/storage-angular';  // Importar IonicStorageModule
 
 // Asegúrate de que la ruta es correcta
 import { MiModalComponent } from './mi-modal-component/mi-modal-component.component';
@@ -20,7 +20,8 @@ import { MiModalComponent } from './mi-modal-component/mi-modal-component.compon
     BrowserModule,
     IonicModule.forRoot(),
     AppRoutingModule,
-    HttpClientModule // Incluir HttpClientModule en imports
+    HttpClientModule, // Incluir HttpClientModule en imports
+    IonicStorageModule.forRoot()  // Inicializar el módulo de Storage
   ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],

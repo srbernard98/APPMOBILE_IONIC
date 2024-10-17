@@ -13,7 +13,8 @@ export class PortadaPage implements OnInit {
   euroValue: number = 0;  // Valor del euro
   clpAmount: number = 0;  // Monto en pesos chilenos que el usuario ingresa
   usdAmount: number = 0;  // Monto en dólares que el usuario ingresa
-  apiKey: string = 'TU_CLAVE_DE_API';  // Aquí colocas tu clave API de CurrencyLayer
+  apiKey: string = '57f02538933fb88c23fa3187e222ec59'; 
+  username: string = '';  // Almacena el nombre del usuario
 
   constructor(private router: Router, private http: HttpClient) {}
 
@@ -21,6 +22,9 @@ export class PortadaPage implements OnInit {
     const date = new Date();
     const options: Intl.DateTimeFormatOptions = { month: 'long' };
     this.currentMonth = date.toLocaleDateString('es-ES', options);
+
+    // Obtener el nombre del usuario desde localStorage
+    this.username = localStorage.getItem('username') || 'Usuario';  // Si no existe, se muestra 'Usuario' por defecto
 
     // Obtener datos de CurrencyLayer en tiempo real y simular algunos valores con JSON-server
     this.getRealTimeRates();
