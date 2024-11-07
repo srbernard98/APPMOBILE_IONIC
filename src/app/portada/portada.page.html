@@ -9,12 +9,10 @@
 
 <ion-content id="main-content" class="white-background">
   <div class="header-section">
-    <!-- Mostrar el saludo de bienvenida -->
     <h2 class="welcome-message">¡Bienvenido, {{ username }}!</h2>
     <p class="subtitle">Toma el control de tus finanzas.</p>
   </div>
 
-  <!-- Nueva card para el resumen mensual -->
   <ion-card>
     <ion-card-header>
       <ion-card-title>Resumen del Mes</ion-card-title>
@@ -26,20 +24,17 @@
     </ion-card-content>
   </ion-card>
 
-  <!-- Sección para ingresar montos y realizar conversiones -->
   <ion-card>
     <ion-card-header>
       <ion-card-title>Conversión de Moneda</ion-card-title>
     </ion-card-header>
     <ion-card-content>
-      <!-- Input para monto en pesos chilenos -->
       <ion-item>
         <ion-label position="floating">Monto en CLP (Pesos Chilenos)</ion-label>
         <ion-input [(ngModel)]="clpAmount" (ionInput)="convertFromCLP()" type="number"></ion-input>
       </ion-item>
       <p>Equivalente en Dólares: {{ usdAmount | number:'1.2-2' }} USD</p>
 
-      <!-- Input para monto en dólares -->
       <ion-item>
         <ion-label position="floating">Monto en USD (Dólares)</ion-label>
         <ion-input [(ngModel)]="usdAmount" (ionInput)="convertFromUSD()" type="number"></ion-input>
@@ -48,19 +43,16 @@
     </ion-card-content>
   </ion-card>
 
-  <!-- Card para mostrar el valor del dólar y el euro en tiempo real -->
   <ion-card>
     <ion-card-header>
       <ion-card-title>Valor en Tiempo Real</ion-card-title>
     </ion-card-header>
-
     <ion-card-content>
       <p>Valor del Dólar (USD): {{ dollarValue | number:'1.0-0' }} CLP</p>
       <p>Valor del Euro (EUR): {{ euroValue | number:'1.2-2' }} EUR</p>
     </ion-card-content>
   </ion-card>
 
-  <!-- Botones para navegar a otras páginas -->
   <ion-button expand="full" class="action-button" (click)="navigateTo('gastos')">
     Ver Gastos
   </ion-button>
@@ -68,3 +60,17 @@
     Ver Ingresos
   </ion-button>
 </ion-content>
+
+<!-- Navbar en la parte inferior -->
+<ion-footer>
+  <ion-tab-bar slot="bottom">
+    <ion-tab-button (click)="navigateTo('maps')">
+      <ion-icon name="map-outline"></ion-icon>
+      <ion-label>Mapa</ion-label>
+    </ion-tab-button>
+    <ion-tab-button (click)="navigateTo('profile')">
+      <ion-icon name="person-outline"></ion-icon>
+      <ion-label>Perfil</ion-label>
+    </ion-tab-button>
+  </ion-tab-bar>
+</ion-footer>

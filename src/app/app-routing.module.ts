@@ -32,7 +32,15 @@ const routes: Routes = [
   },
 
   // Ruta wildcard para redirigir cualquier ruta inválida al login
-  { path: '**', redirectTo: 'login' }
+  { path: '**', redirectTo: 'login' },
+  {
+    path: 'maps',
+    loadChildren: () => import('./maps/maps.module').then( m => m.MapsPageModule)
+  },
+  {
+    path: 'profile',
+    loadChildren: () => import('./profile/profile.module').then( m => m.ProfilePageModule)
+  }
 ];
 
 @NgModule({

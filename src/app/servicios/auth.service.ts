@@ -6,8 +6,8 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class AuthService {
-  // Aquí defines la URL de tu API
-  private apiURL = 'https://reqres.in/api'; // Puedes cambiar a tu propia API si la tienes
+
+  private apiURL = 'https://reqres.in/api'; //
 
   constructor(private http: HttpClient) {}
 

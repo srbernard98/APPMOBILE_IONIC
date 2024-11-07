@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Perfil de Usuario</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <div class="profile-section">
+    <ion-avatar class="avatar">
+      <img src="assets/avatar-default.png" alt="Foto de perfil">
+    </ion-avatar>
+    <h2 class="username">{{ username }}</h2>
+    <p class="user-email">{{ userEmail }}</p>
+  </div>
+
+  <ion-list>
+    <ion-item>
+      <ion-label>Nombre</ion-label>
+      <ion-text>{{ username }}</ion-text>
+    </ion-item>
+    <ion-item>
+      <ion-label>Correo Electrónico</ion-label>
+      <ion-text>{{ userEmail }}</ion-text>
+    </ion-item>
+  </ion-list>
+
+  <ion-button expand="full" color="danger" (click)="logout()">Cerrar Sesión</ion-button>
+</ion-content>
