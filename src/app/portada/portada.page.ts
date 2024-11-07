@@ -24,13 +24,20 @@ export class PortadaPage implements OnInit {
   constructor(private router: Router, private http: HttpClient, private storage: Storage) {}
 
   async ngOnInit() {
+    // Verificar si el usuario está autenticado
+    const isAuthenticated = await this.storage.get('isAuthenticated');
+    if (!isAuthenticated) {
+      this.router.navigate(['/login']); // Redirige al login si no está autenticado
+      return;
+    }
+
+    // Cargar datos del usuario
+    this.username = await this.storage.get('username') || 'Usuario';
+
+    // Inicializar otros datos
     const date = new Date();
     const options: Intl.DateTimeFormatOptions = { month: 'long' };
     this.currentMonth = date.toLocaleDateString('es-ES', options);
-
-    await this.storage.create();
-
-    this.username = await this.storage.get('username') || 'Usuario';
 
     this.getRealTimeRates();
   }
@@ -38,7 +45,6 @@ export class PortadaPage implements OnInit {
   async ionViewWillEnter() {
     this.totalIngresos = await this.storage.get('totalIngresos') || 0;
     this.totalGastos = await this.storage.get('totalGastos') || 0;
-
     this.balanceMensual = this.totalIngresos - this.totalGastos;
   }
 
@@ -69,11 +75,24 @@ export class PortadaPage implements OnInit {
     }
   }
 
+  // Función específica para navegar a la página de Maps
+  navigateToMaps() {
+    this.router.navigate(['/maps']);
+  }
+
+  // Función específica para navegar a la página de Profile
+  navigateToProfile() {
+    this.router.navigate(['/profile']);
+  }
+
+  // Navegación genérica a una página dada
   navigateTo(page: string) {
     this.router.navigate([`/${page}`]);
   }
 
   logout() {
+    // Al hacer logout, elimina el estado de autenticación
+    this.storage.set('isAuthenticated', false);
     this.router.navigate(['/login']);
   }
 }

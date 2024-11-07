@@ -1,46 +1,24 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
-import { AuthGuard } from './auth.guard';  // Importamos el AuthGuard
+import { AuthGuard } from './auth.guard';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'login', pathMatch: 'full' },  // Ruta de redirección al login por defecto
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login', loadChildren: () => import('./login/login.module').then(m => m.LoginPageModule) },
   { path: 'newuser', loadChildren: () => import('./newuser/newuser.module').then(m => m.NewUserPageModule) },
-
-  // Corrección del nombre del módulo ResetPassPageModule
   { path: 'resetpass', loadChildren: () => import('./resetpass/resetpass.module').then(m => m.ResetPassPageModule) },
-
   { path: 'fundfloe', loadChildren: () => import('./fundfloe/fundfloe.module').then(m => m.FundfloePageModule) },
 
-  // Ruta protegida con AuthGuard para la página de inicio
-  {
-    path: 'portada',
-    loadChildren: () => import('./portada/portada.module').then(m => m.PortadaPageModule),
-    canActivate: [AuthGuard]  // Protegemos la ruta de portada con AuthGuard
-  },
+  // Rutas protegidas con AuthGuard
+  { path: 'portada', loadChildren: () => import('./portada/portada.module').then(m => m.PortadaPageModule), canActivate: [AuthGuard] },
+  { path: 'gastos', loadChildren: () => import('./gastos/gastos.module').then(m => m.GastosPageModule), canActivate: [AuthGuard] },
+  { path: 'ingresos', loadChildren: () => import('./ingresos/ingresos.module').then(m => m.IngresosPageModule), canActivate: [AuthGuard] },
 
-  // Rutas protegidas para Gastos e Ingresos
-  {
-    path: 'gastos',
-    loadChildren: () => import('./gastos/gastos.module').then(m => m.GastosPageModule),
-    canActivate: [AuthGuard]  // Protegemos la ruta de gastos
-  },
-  {
-    path: 'ingresos',
-    loadChildren: () => import('./ingresos/ingresos.module').then(m => m.IngresosPageModule),
-    canActivate: [AuthGuard]  // Protegemos la ruta de ingresos
-  },
+  // Rutas sin protección
+  { path: 'maps', loadChildren: () => import('./maps/maps.module').then(m => m.MapsPageModule) },
+  { path: 'profile', loadChildren: () => import('./profile/profile.module').then(m => m.ProfilePageModule) },
 
-  // Ruta wildcard para redirigir cualquier ruta inválida al login
-  { path: '**', redirectTo: 'login' },
-  {
-    path: 'maps',
-    loadChildren: () => import('./maps/maps.module').then( m => m.MapsPageModule)
-  },
-  {
-    path: 'profile',
-    loadChildren: () => import('./profile/profile.module').then( m => m.ProfilePageModule)
-  }
+  { path: '**', redirectTo: 'login' }
 ];
 
 @NgModule({

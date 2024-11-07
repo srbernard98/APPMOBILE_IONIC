@@ -1,13 +1,48 @@
+<!-- Menú lateral -->
+<ion-menu side="start" contentId="main-content">
+  <ion-header>
+    <ion-toolbar color="primary">
+      <ion-title>Menú</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content>
+    <ion-list>
+      <ion-item button (click)="navigateTo('portada')">
+        <ion-icon name="home-outline" slot="start"></ion-icon>
+        <ion-label>Portada</ion-label>
+      </ion-item>
+      <ion-item button (click)="navigateTo('ingresos')">
+        <ion-icon name="cash-outline" slot="start"></ion-icon>
+        <ion-label>Ingresos</ion-label>
+      </ion-item>
+      <ion-item button (click)="navigateTo('gastos')">
+        <ion-icon name="cash-outline" slot="start"></ion-icon>
+        <ion-label>Gastos</ion-label>
+      </ion-item>
+      <ion-item button (click)="logout()">
+        <ion-icon name="log-out-outline" slot="start"></ion-icon>
+        <ion-label>Cerrar Sesión</ion-label>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-menu>
+
+<!-- Contenido de la página de perfil -->
 <ion-header>
   <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
     <ion-title>Perfil de Usuario</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="ion-padding">
+<ion-content id="main-content" class="ion-padding">
   <div class="profile-section">
-    <ion-avatar class="avatar">
-      <img src="assets/avatar-default.png" alt="Foto de perfil">
+    <ion-avatar class="avatar" (click)="presentPhotoOptions()">
+      <img [src]="profilePicture" alt="Foto de perfil">
+      <ion-icon class="camera-icon" name="camera-outline"></ion-icon>
     </ion-avatar>
     <h2 class="username">{{ username }}</h2>
     <p class="user-email">{{ userEmail }}</p>

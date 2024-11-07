@@ -1,0 +1,85 @@
+/* Estilo general del contenido */
+ion-content {
+  --background: #F3F4F6; /* Fondo suave y limpio */
+}
+
+/* Sección del perfil */
+.profile-section {
+  text-align: center;
+  margin-top: 30px;
+}
+
+/* Estilo del avatar */
+.avatar {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  margin: 0 auto;
+  cursor: pointer;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15); /* Sombra suave */
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid #0CB7F2; /* Borde azul */
+}
+
+.camera-icon {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  font-size: 24px;
+  color: #ffffff;
+  background-color: #0CB7F2; /* Color de fondo del icono */
+  border-radius: 50%;
+  padding: 5px;
+  cursor: pointer;
+}
+
+/* Nombre de usuario */
+.username {
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: #333;
+  margin-top: 15px;
+}
+
+/* Correo electrónico */
+.user-email {
+  font-size: 1.1rem;
+  color: #666;
+  margin-top: 5px;
+}
+
+/* Estilo de la lista de información del usuario */
+ion-list {
+  --background: transparent;
+  margin-top: 20px;
+}
+
+ion-item {
+  --background: #ffffff; /* Fondo blanco */
+  color: #333;
+  border-radius: 15px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  margin-bottom: 15px;
+  padding: 10px;
+}
+
+ion-label {
+  font-size: 1.1rem;
+  color: #0CB7F2; /* Azul para los títulos */
+}
+
+ion-text {
+  font-size: 1.2rem;
+  color: #333; /* Color principal del texto */
+}
+
+/* Botón de acción */
+ion-button {
+  margin: 20px 0;
+  background-color: #0CB7F2; /* Color azul claro para los botones */
+  border-radius: 20px;
+  color: white;
+  font-size: 1.1rem;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}

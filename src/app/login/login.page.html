@@ -9,12 +9,12 @@
     <form (ngSubmit)="onSubmit()" class="login-container" [formGroup]="ngForm">
       <ion-item>
         <ion-label position="floating">Correo Electrónico</ion-label>
-        <ion-input type="email" required [(ngModel)]="email" name="email" formControlName="usuario"></ion-input>
+        <ion-input type="email" required name="email" formControlName="usuario"></ion-input>
       </ion-item>
 
       <ion-item>
         <ion-label position="floating">Contraseña</ion-label>
-        <ion-input type="password" required [(ngModel)]="password" name="password" formControlName="password"></ion-input>
+        <ion-input type="password" required name="password" formControlName="password"></ion-input>
       </ion-item>
 
       <ion-button expand="block" type="submit" [disabled]="ngForm.invalid">Iniciar Sesión</ion-button>
